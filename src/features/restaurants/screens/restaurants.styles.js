@@ -7,7 +7,6 @@ export const SearchBarContainer = styled.View`
 `;
 
 export const ContentContainer = styled.View`
-  background-color: ${(props) => props.theme.colors.bg.primary};
   margin-bottom: ${(props) => props.theme.space[13]};
 `;
 
@@ -16,3 +15,9 @@ export const FlatlistContainer = styled(FlatList).attrs({
     padding: 16,
   },
 });
+
+export const ActivityIndicatorView = styled.View`
+  height: 80%;
+  justify-content: center;
+  align-items: center;
+`;

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { Text } from "react-native";
 import {
   useFonts,
   RobotoCondensed_400Regular,
@@ -14,6 +14,8 @@ import { theme } from "./src/infrastructure/theme";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { SafeArea } from "./src/components/safeArea";
 import { Ionicons } from "@expo/vector-icons";
+import { RestaurantContextProvider } from "./src/services/restaurants/restaurants.context";
+import { LocationContextProvider } from "./src/services/location/location.context";
 
 const TABS_ICONS = {
   Restaurants: "restaurant",
@@ -23,7 +25,6 @@ const TABS_ICONS = {
 
 const createScreenOptions = ({ route }) => {
   const iconName = TABS_ICONS[route.name];
-  console.log(iconName, "in");
   return {
     headerShown: false,
     tabBarIcon: ({ color, size }) => {
@@ -58,14 +59,18 @@ export default function App() {
     return <AppLoading />;
   }
   return (
-    <NavigationContainer>
-      <ThemeProvider theme={theme}>
-        <Tab.Navigator screenOptions={createScreenOptions}>
-          <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
-          <Tab.Screen name="Map" component={MapScreen} />
-          <Tab.Screen name="Settings" component={SettingsScreen} />
-        </Tab.Navigator>
-      </ThemeProvider>
-    </NavigationContainer>
+    <ThemeProvider theme={theme}>
+      <LocationContextProvider>
+        <RestaurantContextProvider>
+          <NavigationContainer>
+            <Tab.Navigator screenOptions={createScreenOptions}>
+              <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+              <Tab.Screen name="Map" component={MapScreen} />
+              <Tab.Screen name="Settings" component={SettingsScreen} />
+            </Tab.Navigator>
+          </NavigationContainer>
+        </RestaurantContextProvider>
+      </LocationContextProvider>
+    </ThemeProvider>
   );
 }
