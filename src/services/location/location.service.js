@@ -14,5 +14,6 @@ export const transformedLocation = (response) => {
   const res = response.results[0];
   const { geometry } = res;
   const { lng, lat } = geometry.location;
-  return { lng, lat };
+  const { viewport } = geometry;
+  return { lng, lat, viewport };
 };

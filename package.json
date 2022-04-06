@@ -15,6 +15,7 @@
     "@react-native-community/eslint-config": "^3.0.1",
     "@react-navigation/bottom-tabs": "^6.3.1",
     "@react-navigation/native": "^6.0.10",
+    "@react-navigation/native-stack": "^6.6.1",
     "camelize": "^1.0.0",
     "eslint": "^7.32.0",
     "expo": "~44.0.0",
@@ -31,7 +32,8 @@
     "react-native-svg": "12.1.1",
     "react-native-web": "0.17.1",
     "styled-components": "^5.3.5",
-    "undefined": "@expo-google-fonts/send+flowers"
+    "undefined": "@expo-google-fonts/send+flowers",
+    "react-native-maps": "0.29.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

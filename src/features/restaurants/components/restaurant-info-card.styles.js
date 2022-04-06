@@ -5,10 +5,7 @@ export const Info = styled.View`
   padding: ${(props) => props.theme.space[3]};
 `;
 
-export const CardContainer = styled(Card)`
-  margin-right: ${(props) => props.theme.space[3]};
-  margin-left: ${(props) => props.theme.space[3]};
-`;
+export const CardContainer = styled(Card)``;
 
 export const RestaurantCardCover = styled(Card.Cover)`
   padding: ${(props) => props.theme.space[3]};

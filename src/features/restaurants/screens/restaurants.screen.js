@@ -1,18 +1,22 @@
-import React, { useState, useContext } from "react";
-import { FlatList } from "react-native";
-import { Searchbar, ActivityIndicator } from "react-native-paper";
+import React, { useContext } from "react";
+import { FlatList, View } from "react-native";
+import { ActivityIndicator } from "react-native-paper";
 
 import { SafeArea } from "../../../components/safeArea";
 import { Spacer } from "../../../components/spacer";
 import { RestaurantContext } from "../../../services/restaurants/restaurants.context";
 import { RestaurantInfoCard } from "../components/restaurant-info-card";
 import { Search } from "../components/search.component";
-import { SearchBarContainer } from "./restaurants.styles";
+import { CardContainer, SearchBarContainer } from "./restaurants.styles";
 import { ContentContainer } from "./restaurants.styles";
 import { ActivityIndicatorView } from "./restaurants.styles";
 
-export const RestaurantsScreen = () => {
+export const RestaurantsScreen = ({ navigation }) => {
   const { restaurants, error, isLoading } = useContext(RestaurantContext);
+
+  const pressCardHandler = (restaurant) => {
+    navigation.navigate("RestaurantDetail", { restaurant });
+  };
 
   return (
     <SafeArea>
@@ -31,7 +35,12 @@ export const RestaurantsScreen = () => {
             keyExtractor={(item) => item.name}
             renderItem={({ item }) => (
               <Spacer position="bottom" size="large">
-                <RestaurantInfoCard restaurant={item} />
+                <CardContainer>
+                  <RestaurantInfoCard
+                    restaurant={item}
+                    onPress={() => pressCardHandler(item)}
+                  />
+                </CardContainer>
               </Spacer>
             )}
           />
