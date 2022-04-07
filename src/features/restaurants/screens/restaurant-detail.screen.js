@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, View, ScrollView } from "react-native";
 import { List } from "react-native-paper";
+import { SafeArea } from "../../../components/safeArea";
 import { Spacer } from "../../../components/spacer";
 import { RestaurantInfoCard } from "../components/restaurant-info-card";
 
@@ -12,7 +13,7 @@ export const RestaurantDetail = ({ route }) => {
   const { restaurant } = route?.params;
 
   return (
-    <>
+    <SafeArea>
       <Spacer position="bottom" size="large">
         <RestaurantInfoCard restaurant={restaurant} />
       </Spacer>
@@ -45,6 +46,6 @@ export const RestaurantDetail = ({ route }) => {
           <List.Item title="Steak" />
         </List.Accordion>
       </ScrollView>
-    </>
+    </SafeArea>
   );
 };

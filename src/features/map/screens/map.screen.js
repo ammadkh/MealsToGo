@@ -19,12 +19,11 @@ const SearchContainer = styled.View`
   z-index: 10;
 `;
 
-export const MapScreen = () => {
+export const MapScreen = ({ navigation }) => {
   const [latitudeDelta, setLatitudeDelta] = useState(0);
   const { location } = useContext(LocationContext);
   const { restaurants } = useContext(RestaurantContext);
   const { viewport } = location;
-  console.log(viewport, "vp");
 
   useEffect(() => {
     const northeastlat = viewport.northeast.lat;
@@ -53,7 +52,11 @@ export const MapScreen = () => {
               longitude: restaurant.geometry.location.lng,
             }}
           >
-            <Callout>
+            <Callout
+              onPress={() =>
+                navigation.navigate("RestaurantDetail", { restaurant })
+              }
+            >
               <MapCallout restaurant={restaurant} />
             </Callout>
           </Marker>

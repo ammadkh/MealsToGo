@@ -15,6 +15,7 @@ import { SvgContainer } from "./restaurant-info-card.styles";
 import { Rating } from "./restaurant-info-card.styles";
 import { EndSection } from "./restaurant-info-card.styles";
 import { IconImg } from "./restaurant-info-card.styles";
+import { Favourite } from "../../../components/favourite/favourite.component";
 
 export const RestaurantInfoCard = ({ restaurant = {}, onPress }) => {
   const {
@@ -31,6 +32,7 @@ export const RestaurantInfoCard = ({ restaurant = {}, onPress }) => {
     <TouchableOpacity onPress={onPress}>
       <CardContainer elevation={5}>
         <RestaurantCardCover source={{ uri: photos[0] }} />
+        <Favourite restaurant={restaurant} />
         <Info>
           <Text variant="label">{name}</Text>
           <SvgContainer>

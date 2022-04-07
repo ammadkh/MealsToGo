@@ -12,6 +12,7 @@ export const Search = () => {
 
   return (
     <Searchbar
+      icon="map"
       placeholder="Search for location"
       onSubmitEditing={() => onSearch(searchQuery)}
       onChangeText={(query) => setSearchQuery(query)}
