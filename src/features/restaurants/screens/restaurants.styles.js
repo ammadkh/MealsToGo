@@ -6,9 +6,7 @@ export const SearchBarContainer = styled.View`
   justify-content: center;
 `;
 
-export const ContentContainer = styled.View`
-  margin-bottom: ${(props) => props.theme.space[13]};
-`;
+export const ContentContainer = styled.View``;
 
 export const FlatlistContainer = styled(FlatList).attrs({
   contentContainerStyle: {

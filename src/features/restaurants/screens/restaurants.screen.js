@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { FlatList, View } from "react-native";
 import { ActivityIndicator } from "react-native-paper";
+import { FadeInAnimation } from "../../../components/animation/fade-in.animation";
 import { FavouriteBar } from "../../../components/favourite/favourite-bar.compoent";
 
 import { SafeArea } from "../../../components/safeArea";
@@ -44,14 +45,16 @@ export const RestaurantsScreen = ({ navigation }) => {
             data={restaurants}
             keyExtractor={(item) => item.name}
             renderItem={({ item }) => (
-              <Spacer position="bottom" size="large">
-                <CardContainer>
-                  <RestaurantInfoCard
-                    restaurant={item}
-                    onPress={() => pressCardHandler(item)}
-                  />
-                </CardContainer>
-              </Spacer>
+              <FadeInAnimation duration={3000}>
+                <Spacer position="bottom" size="large">
+                  <CardContainer>
+                    <RestaurantInfoCard
+                      restaurant={item}
+                      onPress={() => pressCardHandler(item)}
+                    />
+                  </CardContainer>
+                </Spacer>
+              </FadeInAnimation>
             )}
           />
         </ContentContainer>

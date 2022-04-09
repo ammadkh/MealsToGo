@@ -31,12 +31,19 @@ const label = (theme) => `
     font-weight: ${theme.fontWeights.medium};
 `;
 
+const heading = (theme) => `
+    font-family: ${theme.fonts.heading};
+    font-size: ${theme.fontSizes.h4};
+    font-weight: ${theme.fontWeights.medium};
+`;
+
 const variants = {
   body,
   label,
   caption,
   error,
   hint,
+  heading,
 };
 
 export const Text = styled.Text`

@@ -1,11 +1,53 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { AccountBackground } from "../components/account.style";
+import { Spacer } from "../../../components/spacer";
+import { Text } from "../../../components/typography";
+import {
+  AccountBackground,
+  AccountContainer,
+  AccountCover,
+  AuthButton,
+} from "../components/account.style";
+import LottieView from "lottie-react-native";
+import styled from "styled-components/native";
 
-export const AccountScreen = () => {
+const AnimationWrapper = styled.View`
+  position: absolute;
+  top: 80px;
+  width: 100%;
+  height: 40%;
+`;
+export const AccountScreen = ({ navigation }) => {
   return (
     <AccountBackground>
-      <Text>Hi</Text>
+      <AccountCover />
+      <AnimationWrapper>
+        <LottieView
+          source={require("../../../../assets/watermelon.json")}
+          autoPlay
+          loop
+        />
+      </AnimationWrapper>
+      <Spacer position="bottom" size="large">
+        <Text variant="heading">Meals To Go</Text>
+      </Spacer>
+      <AccountContainer>
+        <AuthButton
+          icon="lock"
+          mode="contained"
+          onPress={() => navigation.navigate("Login")}
+        >
+          Login
+        </AuthButton>
+        <Spacer size="large">
+          <AuthButton
+            icon="account-plus"
+            mode="contained"
+            onPress={() => navigation.navigate("Register")}
+          >
+            Register
+          </AuthButton>
+        </Spacer>
+      </AccountContainer>
     </AccountBackground>
   );
 };
