@@ -12,7 +12,7 @@ import styled from "styled-components/native";
 
 const AnimationWrapper = styled.View`
   position: absolute;
-  top: 80px;
+  top: 50px;
   width: 100%;
   height: 40%;
 `;
@@ -25,6 +25,7 @@ export const AccountScreen = ({ navigation }) => {
           source={require("../../../../assets/watermelon.json")}
           autoPlay
           loop
+          resizeMode="cover"
         />
       </AnimationWrapper>
       <Spacer position="bottom" size="large">

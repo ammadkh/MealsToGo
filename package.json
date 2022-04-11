@@ -37,7 +37,9 @@
     "react-native-web": "0.17.1",
     "react-native-webview": "11.15.0",
     "styled-components": "^5.3.5",
-    "undefined": "@expo-google-fonts/send+flowers"
+    "undefined": "@expo-google-fonts/send+flowers",
+    "expo-updates": "~0.11.6",
+    "expo-camera": "~12.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
