@@ -33,7 +33,9 @@ module.exports.getSuggestedPlaces = (request, response) => {
   }
   var config = {
     method: "get",
-    url: `https://maps.googleapis.com/maps/api/place/queryautocomplete/json?input=${search}&types=city&key=AIzaSyDmaqaYKJz8LZk4QUeL-0ToAJUUAxjmnPs`,
+    url: `https://maps.googleapis.com/maps/api/place/queryautocomplete/json?input=${search}&types=city&key=${
+      functions.config().google.key
+    }`,
     headers: {},
   };
 

@@ -1853,3 +1853,40 @@ Issues? Report them at https://github.com/firebase/firebase-tools/issues and att
 [info] i  functions: Finished "restaurants" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-restaurants"},"extension":{},"message":"Finished \"restaurants\" in ~1s"}}
 [debug] [2022-04-12T07:18:47.398Z] [worker-us-central1-restaurants-8190c49c-9caf-4ce0-b669-a89cd18fbcaf]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-restaurants-8190c49c-9caf-4ce0-b669-a89cd18fbcaf]: IDLE"}}
 [debug] [2022-04-12T07:18:47.398Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2022-04-12T07:21:38.848Z] File /Users/ammadkhan/Documents/practice/MealsToGo/functions/geocode/index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/ammadkhan/Documents/practice/MealsToGo/functions/geocode/index.js changed, reloading triggers"}}
+[debug] [2022-04-12T07:21:39.848Z] [worker-pool] Shutting down IDLE worker (us-central1-geocode) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-geocode)"}}
+[debug] [2022-04-12T07:21:39.849Z] [worker-us-central1-geocode-5c19664c-5e49-42e6-b4d3-14b0d536cfeb]: FINISHING {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-geocode-5c19664c-5e49-42e6-b4d3-14b0d536cfeb]: FINISHING"}}
+[debug] [2022-04-12T07:21:39.849Z] [worker-pool] Shutting down IDLE worker (us-central1-restaurants) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-restaurants)"}}
+[debug] [2022-04-12T07:21:39.849Z] [worker-us-central1-restaurants-8190c49c-9caf-4ce0-b669-a89cd18fbcaf]: FINISHING {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-restaurants-8190c49c-9caf-4ce0-b669-a89cd18fbcaf]: FINISHING"}}
+[debug] [2022-04-12T07:21:39.850Z] Validating nodejs source
+[debug] [2022-04-12T07:21:40.957Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "@googlemaps/google-maps-services-js": "^3.3.12",
+    "axios": "^0.26.1",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-04-12T07:21:40.958Z] Building nodejs source
+[debug] [2022-04-12T07:21:40.958Z] Analyzing nodejs backend spec
+[debug] [2022-04-12T07:21:40.961Z] [worker-us-central1-restaurants-8190c49c-9caf-4ce0-b669-a89cd18fbcaf]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-restaurants-8190c49c-9caf-4ce0-b669-a89cd18fbcaf]: exited"}}
+[debug] [2022-04-12T07:21:40.961Z] [worker-us-central1-restaurants-8190c49c-9caf-4ce0-b669-a89cd18fbcaf]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-restaurants-8190c49c-9caf-4ce0-b669-a89cd18fbcaf]: FINISHED"}}
+[debug] [2022-04-12T07:21:40.961Z] [worker-us-central1-geocode-5c19664c-5e49-42e6-b4d3-14b0d536cfeb]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-geocode-5c19664c-5e49-42e6-b4d3-14b0d536cfeb]: exited"}}
+[debug] [2022-04-12T07:21:40.961Z] [worker-us-central1-geocode-5c19664c-5e49-42e6-b4d3-14b0d536cfeb]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-geocode-5c19664c-5e49-42e6-b4d3-14b0d536cfeb]: FINISHED"}}
