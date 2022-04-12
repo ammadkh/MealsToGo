@@ -6,7 +6,9 @@ export const SearchBarContainer = styled.View`
   justify-content: center;
 `;
 
-export const ContentContainer = styled.View``;
+export const ContentContainer = styled.View`
+  z-index: -1;
+`;
 
 export const FlatlistContainer = styled(FlatList).attrs({
   contentContainerStyle: {

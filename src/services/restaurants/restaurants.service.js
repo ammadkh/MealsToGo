@@ -1,14 +1,10 @@
-import { mockImages, mocks } from "./mocks";
 import camelize from "camelize";
+import { host } from "../../utils/env";
 
-export const RestaurantsRequest = (location = "37.7749295,-122.4194155") => {
-  const mock = mocks[location];
-  return new Promise((resolve, reject) => {
-    if (!mock) {
-      return reject("location not found");
-    }
-    return resolve(mock);
-  });
+export const RestaurantsRequest = (location) => {
+  return fetch(`${host}/restaurants?location=${location}&mock=false`).then(
+    (res) => res.json()
+  );
 };
 
 export const restaurantTransform = ({ results }) => {
@@ -16,7 +12,6 @@ export const restaurantTransform = ({ results }) => {
     return {
       ...restaurant,
       address: restaurant.vicinity,
-      photos: [mockImages[Math.floor(Math.random() * mockImages.length)]],
       isClosedTemporarily: restaurant.business_status === "CLOSED_TEMPORARILY",
       isOpenNow: restaurant.opening_hours && restaurant.opening_hours.isOpenNow,
     };

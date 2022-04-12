@@ -1,10 +1,16 @@
 import React, { createContext, useState, useEffect } from "react";
-import { requestLocation, transformedLocation } from "./location.service";
+import {
+  requestLocation,
+  transformedLocation,
+  requestAutocomplete,
+  transformAutocomplete,
+} from "./location.service";
 
 export const LocationContext = createContext();
 
 export const LocationContextProvider = ({ children }) => {
   const [location, setLocation] = useState("");
+  const [predictions, setPredictions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [keyword, setKeyword] = useState("san francisco");
@@ -14,10 +20,24 @@ export const LocationContextProvider = ({ children }) => {
     setKeyword(searchKeyword);
   };
 
+  const clearPrediction = () => {
+    setPredictions([]);
+  };
+
+  const onAutocomplete = (query) => {
+    requestAutocomplete(query)
+      .then(transformAutocomplete)
+      .then((res) => {
+        setPredictions(res);
+      })
+      .catch((err) => console.log(err, "err"));
+  };
+
   useEffect(() => {
     if (!keyword) {
       return;
     }
+    clearPrediction();
     requestLocation(keyword.toLowerCase())
       .then(transformedLocation)
       .then((res) => {
@@ -39,6 +59,8 @@ export const LocationContextProvider = ({ children }) => {
         error,
         keyword,
         onSearch: onSearch,
+        onAutocomplete,
+        predictions,
       }}
     >
       {children}

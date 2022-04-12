@@ -1,13 +1,19 @@
-import { locations } from "./location.mock";
+import { host } from "../../utils/env";
 
 export const requestLocation = (location) => {
-  const mockLocation = locations[location];
-  return new Promise((resolve, reject) => {
-    if (!mockLocation) {
-      return reject("location not found!");
-    }
-    return resolve(mockLocation);
-  });
+  return fetch(`${host}/geocode?location=${location}&mock=true`).then((res) =>
+    res.json()
+  );
+};
+
+export const requestAutocomplete = (search) => {
+  return fetch(`${host}/autocomplete?search=${search}&mock=true`).then((res) =>
+    res.json()
+  );
+};
+
+export const transformAutocomplete = ({ predictions }) => {
+  return predictions.map((prediction) => prediction.description);
 };
 
 export const transformedLocation = (response) => {
