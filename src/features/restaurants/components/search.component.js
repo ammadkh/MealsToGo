@@ -19,7 +19,7 @@ const FlatListConatiner = styled(FlatList).attrs({
   },
 })`
   position: absolute;
-  top: 50;
+  top: 50px;
   width: 100%;
   background-color: white;
 `;

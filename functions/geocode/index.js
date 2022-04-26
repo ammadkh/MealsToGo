@@ -8,7 +8,11 @@ module.exports.geocodeRequest = (request, response, client) => {
   const { location, mock } = url.parse(request.url, true).query;
   if (mock === "true") {
     const locationInfo = locations[location.toLowerCase()];
-    return response.json(locationInfo);
+    if (locationInfo) {
+      return response.json(locationInfo);
+    }
+    response.status(400);
+    return response.json();
   }
   client
     .geocode({
@@ -22,7 +26,7 @@ module.exports.geocodeRequest = (request, response, client) => {
     .catch((error) => {
       console.log(error, "error");
       response.status(400);
-      return response.send(error);
+      return response.json(error);
     });
 };
 

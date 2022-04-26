@@ -22,6 +22,12 @@ export const ActivityIndicatorView = styled.View`
   align-items: center;
 `;
 
+export const ErrorView = styled.View`
+  height: 80%;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const CardContainer = styled.View`
   margin-right: ${(props) => props.theme.space[3]};
   margin-left: ${(props) => props.theme.space[3]};

@@ -26,6 +26,6 @@ module.exports.restaurantRequest = (request, response, client) => {
     .catch((error) => {
       console.log(error, "error");
       response.status(400);
-      return response.send(error);
+      return response.json(error);
     });
 };

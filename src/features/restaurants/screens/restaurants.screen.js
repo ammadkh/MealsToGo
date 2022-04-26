@@ -6,15 +6,19 @@ import { FavouriteBar } from "../../../components/favourite/favourite-bar.compoe
 
 import { SafeArea } from "../../../components/safeArea";
 import { Spacer } from "../../../components/spacer";
+import { Text } from "../../../components/typography";
 import { FavouriteContext } from "../../../services/favourites/favourites.context";
+import { LocationContext } from "../../../services/location/location.context";
 import { RestaurantContext } from "../../../services/restaurants/restaurants.context";
 import { RestaurantInfoCard } from "../components/restaurant-info-card";
 import { Search } from "../components/search.component";
 import { CardContainer, SearchBarContainer } from "./restaurants.styles";
 import { ContentContainer } from "./restaurants.styles";
+import { ErrorView } from "./restaurants.styles";
 import { ActivityIndicatorView } from "./restaurants.styles";
 
 export const RestaurantsScreen = ({ navigation }) => {
+  const { error: locationError } = useContext(LocationContext);
   const { restaurants, error, isLoading } = useContext(RestaurantContext);
   const { favourites } = useContext(FavouriteContext);
   const [isToggled, setIsToggled] = useState(false);
@@ -26,6 +30,7 @@ export const RestaurantsScreen = ({ navigation }) => {
     setIsToggled((prevValue) => !prevValue);
   };
 
+  const hasError = error || locationError;
   return (
     <SafeArea>
       <SearchBarContainer>
@@ -34,12 +39,17 @@ export const RestaurantsScreen = ({ navigation }) => {
       {isToggled && (
         <FavouriteBar favourites={favourites} onPress={pressCardHandler} />
       )}
+      {hasError && (
+        <ErrorView>
+          <Text variant="error">Something went wrong while fetching data.</Text>
+        </ErrorView>
+      )}
       {isLoading && (
         <ActivityIndicatorView>
           <ActivityIndicator animating={true} color="red" size={50} />
         </ActivityIndicatorView>
       )}
-      {!isLoading && (
+      {!hasError && !isLoading && (
         <ContentContainer>
           <FlatList
             data={restaurants}

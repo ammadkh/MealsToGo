@@ -1,14 +1,14 @@
-import { host } from "../../utils/env";
+import { host, isMock } from "../../utils/env";
 
 export const requestLocation = (location) => {
-  return fetch(`${host}/geocode?location=${location}&mock=true`).then((res) =>
-    res.json()
+  return fetch(`${host}/geocode?location=${location}&mock=${isMock}`).then(
+    (res) => res.json()
   );
 };
 
 export const requestAutocomplete = (search) => {
-  return fetch(`${host}/autocomplete?search=${search}&mock=true`).then((res) =>
-    res.json()
+  return fetch(`${host}/autocomplete?search=${search}&mock=${isMock}`).then(
+    (res) => res.json()
   );
 };
 
